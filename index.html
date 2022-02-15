@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jogo da Velha</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="select-box">
+        <h1>Jogo da Velha</h1>
+        <h2>Selecione um símbolo:</h2>
+        <div class="players-btns">
+            <button class="players-btn" onclick="xButton()">X</button>
+            <button class="players-btn" onclick="oButton()">O</button>
+        </div>
+    </div>
+
+    <div class="play-area hide">
+        <h2>Turno do:</h2>
+        <div class="turns">
+            <h2 class="player on">X</h2>
+            <h2 class="player">O</h2>
+            <div class="turn-on"></div>
+        </div>
+        <div class="boxes">
+            <div class="box1" onclick="boxClicked(this)"></div>
+            <div class="box2" onclick="boxClicked(this)"></div>
+            <div class="box3" onclick="boxClicked(this)"></div>
+        </div>
+        <div class="boxes">
+            <div class="box4" onclick="boxClicked(this)"></div>
+            <div class="box5" onclick="boxClicked(this)"></div>
+            <div class="box6" onclick="boxClicked(this)"></div>
+        </div>
+        <div class="boxes">
+            <div class="box7" onclick="boxClicked(this)"></div>
+            <div class="box8" onclick="boxClicked(this)"></div>
+            <div class="box9" onclick="boxClicked(this)"></div>
+        </div>
+    </div>
+
+    <div class="winner-box hide">
+        <h2 class="winner-text">Jogador <span></span> venceu!</h2>
+        <button class="replay" onclick="replay()">Jogar novamente</button>
+    </div>
+<script src="app.js"></script>
+</body>
+</html>
