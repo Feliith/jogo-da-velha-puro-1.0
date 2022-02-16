@@ -145,7 +145,7 @@ function selectPlay() {
         verifyBoxPlay(1, 4, 7)
     }
     if (!choice) {
-        verifyBoxPlay(2, 5, 6)
+        verifyBoxPlay(2, 5, 8)
     }
     if (!choice) {
         verifyBoxPlay(3, 6, 9)
