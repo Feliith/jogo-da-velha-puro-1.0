@@ -31,7 +31,33 @@ body {
     justify-content: center;
 }
 
-body > div {
+.snake-image {
+    position: relative;
+    width: 140px;
+    height: 90px;
+    display: none;
+}
+
+.snake-on , .snake-off {
+    width: 140px;
+    position: absolute;
+}
+
+.snake-off {
+    z-index: 5;
+}
+
+.snake-on {
+    z-index: 10;
+    opacity: 0;
+    transition: .5s;
+}
+
+.snake-on.on {
+    opacity: 1;
+}
+
+.select-box, .play-area, .winner-box {
     position: absolute;
     display: flex;
     align-items: center;

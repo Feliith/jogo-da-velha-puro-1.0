@@ -5,6 +5,9 @@ let playSymbol = ''
 
 let winner = false
 
+const snakeBot = document.querySelector('.snake-image')
+const snakeOn = document.querySelector('.snake-on')
+
 const selectBox = document.querySelector('.select-box')
 
 const playArea = document.querySelector('.play-area')
@@ -32,12 +35,14 @@ const oButton = () => {
 function playAreaOn() {
     selectBox.classList.add('hide')
     playArea.classList.remove('hide')
+    snakeBot.style.display = 'block'
 }
 
 function shiftTurn() {
     turnOn.classList.toggle('on')
     player[0].classList.toggle('on')
     player[1].classList.toggle('on')
+    snakeOn.classList.toggle('on')
 }
 
 const boxClicked = (box) => {
@@ -53,7 +58,7 @@ const boxClicked = (box) => {
     if (!winner) {
         setTimeout(() => {
             Bot()
-        }, 650)
+        }, 1200)
     }
 }
 
@@ -106,7 +111,8 @@ function finishGame() {
     setTimeout(() => {
         playArea.classList.add('hide')
         winnerBox.classList.remove('hide')
-    }, 1000)
+        snakeBot.style.display = 'none'
+    }, 1500)
 }
 
 function replay() {
