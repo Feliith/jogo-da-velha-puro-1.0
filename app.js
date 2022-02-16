@@ -3,6 +3,8 @@ let playerSymbol = ''
 let botSymbol = ''
 let playSymbol = ''
 
+let choice = false
+let botPlay = false
 let winner = false
 
 const snakeBot = document.querySelector('.snake-image')
@@ -57,25 +59,33 @@ const boxClicked = (box) => {
     selectWinner()
     if (!winner) {
         setTimeout(() => {
+            selectPlay()
             Bot()
         }, 1200)
     }
 }
 
 const Bot = () => {
-    let freeBox = []
-    for (let i = 0 ; i < 9 ; i++) {
-        if(allBox[i].textContent == '') {
-            freeBox.push(i)
+    if (!botPlay) {
+        let freeBox = []
+        for (let i = 0 ; i < 9 ; i++) {
+            if(allBox[i].textContent == '') {
+                freeBox.push(i)
+            }
         }
-    }
-    const randomBox = freeBox[Math.floor(Math.random() * freeBox.length)]
-    allBox[randomBox].innerText = botSymbol
-    allBox[randomBox].style.pointerEvents = 'none'
-    shiftTurn()
+        const randomBox = freeBox[Math.floor(Math.random() * freeBox.length)]
+        allBox[randomBox].innerText = botSymbol
+        allBox[randomBox].style.pointerEvents = 'none'
 
-    playSymbol = botSymbol
-    allBox[randomBox].setAttribute('id', playSymbol)
+        playSymbol = botSymbol
+        allBox[randomBox].setAttribute('id', playSymbol)
+    } else {
+        selectPlay()
+        choice = false
+    }
+
+    shiftTurn()
+    botPlay = false
 
     selectWinner()
     if (!winner) {
@@ -85,6 +95,66 @@ const Bot = () => {
 
 function getID(boxID) {
     return document.querySelector('.box' + boxID).id
+}
+
+function verifyPlay(val1, val2, val3) {
+    if (getID(val1) == playerSymbol && 
+    getID(val2) == playerSymbol && 
+    allBox[val3 - 1].textContent == '') {
+        return true
+    }
+}
+
+function verifyBoxPlay(val1, val2, val3) {
+    if (verifyPlay(val1, val2, val3)) {
+        botPlay = true
+        playSymbol = botSymbol
+        allBox[val3 - 1].setAttribute('id', playSymbol)
+        allBox[val3 - 1].innerText = botSymbol
+        allBox[val3 - 1].style.pointerEvents = 'none'
+        choice = true
+    } else if (verifyPlay(val1, val3, val2)) {
+        botPlay = true
+        playSymbol = botSymbol
+        allBox[val2 - 1].setAttribute('id', playSymbol)
+        allBox[val2 - 1].innerText = botSymbol
+        allBox[val2 - 1].style.pointerEvents = 'none'
+        choice = true
+    } else if (verifyPlay(val2, val3, val1)) {
+        botPlay = true
+        playSymbol = botSymbol
+        allBox[val1 - 1].setAttribute('id', playSymbol)
+        allBox[val1 - 1].innerText = botSymbol
+        allBox[val1 - 1].style.pointerEvents = 'none'
+        choice = true
+    }
+}
+
+function selectPlay() {
+    if (!choice) {
+        verifyBoxPlay(1, 2, 3)
+    }
+    if (!choice) {
+        verifyBoxPlay(4, 5, 6)
+    }
+    if (!choice) {
+        verifyBoxPlay(7, 8, 9)
+    }
+    if (!choice) {
+        verifyBoxPlay(1, 4, 7)
+    }
+    if (!choice) {
+        verifyBoxPlay(2, 5, 6)
+    }
+    if (!choice) {
+        verifyBoxPlay(3, 6, 9)
+    }
+    if (!choice) {
+        verifyBoxPlay(1, 5, 9)
+    }
+    if (!choice) {
+        verifyBoxPlay(3, 5, 7)
+    }
 }
 
 function verifyWinner(val1, val2, val3) {
