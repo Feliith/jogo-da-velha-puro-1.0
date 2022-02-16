@@ -16,6 +16,7 @@ const playArea = document.querySelector('.play-area')
 const player = document.querySelectorAll('.player')
 const turnOn = document.querySelector('.turn-on')
 const allBox = document.querySelectorAll('.boxes > div')
+const Boxes = document.querySelectorAll('.boxes')
 
 const winnerBox = document.querySelector('.winner-box')
 const winnerText = document.querySelector('.winner-text')
@@ -179,7 +180,9 @@ const selectWinner = () => {
 
 function finishGame() {
     setTimeout(() => {
-        playArea.classList.add('hide')
+        for (let i = 0 ; i < 3 ; i++) {
+            Boxes[i].classList.add('small')
+        }
         winnerBox.classList.remove('hide')
         snakeBot.style.display = 'none'
     }, 1500)
