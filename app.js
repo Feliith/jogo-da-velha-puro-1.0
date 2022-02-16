@@ -179,12 +179,16 @@ const selectWinner = () => {
 }
 
 function finishGame() {
+    if (playSymbol !== playerSymbol) {
+        snakeOn.classList.add('on')
+    } else {
+        snakeOn.classList.remove('on')
+    }
     setTimeout(() => {
         for (let i = 0 ; i < 3 ; i++) {
             Boxes[i].classList.add('small')
         }
         winnerBox.classList.remove('hide')
-        snakeBot.style.display = 'none'
     }, 1500)
 }
 

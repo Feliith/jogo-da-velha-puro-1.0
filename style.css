@@ -32,14 +32,16 @@ body {
 }
 
 .snake-image {
+    background: red;
     position: relative;
-    width: 140px;
-    height: 90px;
+    width: 180px;
+    margin-top: -8px;
     display: none;
+    animation: fadeIn .5s;
 }
 
 .snake-on , .snake-off {
-    width: 140px;
+    width: 180px;
     position: absolute;
 }
 
@@ -50,7 +52,7 @@ body {
 .snake-on {
     z-index: 10;
     opacity: 0;
-    transition: .5s;
+    transition: 1s;
 }
 
 .snake-on.on {
@@ -63,12 +65,13 @@ body {
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    width: 400px;
+    width: 350px;
     height: 400px;
     border: 12px solid var(--standard-color);
     border-radius: 25px;
     top: 50%;
     transform: translateY(-50%);
+    animation: fadeInS .5s;
 }
 
 h1 {
@@ -143,6 +146,7 @@ button:hover {
 
 .boxes {
     display: flex;
+    transition: .5s;
 }
 
 .boxes > div {
@@ -198,6 +202,23 @@ button:hover {
 }
 
 
+@keyframes fadeInS {
+    from {
+        opacity: 0;
+        transform: scale(.5) translateY(-50%);
+    } to {
+        opacity: 1;
+        transform: scale(1) translateY(-50%);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    } to {
+        opacity: 1;
+    }
+}
 
 .hide {
     display: none;
