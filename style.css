@@ -29,35 +29,10 @@ body {
     font-family: "Poppins", sans-serif;
     display: flex;
     justify-content: center;
+    overflow: hidden;
 }
 
-.snake-image {
-    background: red;
-    position: relative;
-    width: 180px;
-    margin-top: -8px;
-    display: none;
-    animation: fadeIn .5s;
-}
 
-.snake-on , .snake-off {
-    width: 180px;
-    position: absolute;
-}
-
-.snake-off {
-    z-index: 5;
-}
-
-.snake-on {
-    z-index: 10;
-    opacity: 0;
-    transition: 1s;
-}
-
-.snake-on.on {
-    opacity: 1;
-}
 
 .select-box, .play-area, .winner-box {
     position: absolute;
@@ -201,6 +176,33 @@ button:hover {
     margin-bottom: -20px;
 }
 
+
+.snake-image {
+    position: absolute;
+    width: 180px;
+    display: none;
+    animation: fadeIn .5s;
+    bottom: 120px;
+}
+
+.snake-on , .snake-off {
+    width: 180px;
+    position: absolute;
+}
+
+.snake-off {
+    z-index: 5;
+}
+
+.snake-on {
+    z-index: 10;
+    opacity: 0;
+    transition: 1s;
+}
+
+.snake-on.on {
+    opacity: 1;
+}
 
 @keyframes fadeInS {
     from {
