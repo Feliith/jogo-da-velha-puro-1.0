@@ -98,6 +98,39 @@ function getID(boxID) {
     return document.querySelector('.box' + boxID).id
 }
 
+function verifySelf(val1, val2, val3) {
+    if (getID(val1) == botSymbol &&
+    getID(val2) == botSymbol &&
+    allBox[val3 - 1].textContent == '') {
+        return true
+    }
+}
+
+function verifyBoxSelf(val1, val2, val3) {
+    if(verifySelf(val1, val2, val3)) {
+        botPlay = true
+        playSymbol = botSymbol
+        allBox[val3 - 1].setAttribute('id', playSymbol)
+        allBox[val3 - 1].innerText = botSymbol
+        allBox[val3 - 1].style.pointerEvents = 'none'
+        choice = true
+    } else if(verifySelf(val1, val3, val2)) {
+        botPlay = true
+        playSymbol = botSymbol
+        allBox[val2 - 1].setAttribute('id', playSymbol)
+        allBox[val2 - 1].innerText = botSymbol
+        allBox[val2 - 1].style.pointerEvents = 'none'
+        choice = true
+    } else if(verifySelf(val2, val3, val1)) {
+        botPlay = true
+        playSymbol = botSymbol
+        allBox[val1 - 1].setAttribute('id', playSymbol)
+        allBox[val1 - 1].innerText = botSymbol
+        allBox[val1 - 1].style.pointerEvents = 'none'
+        choice = true
+    }
+}
+
 function verifyPlay(val1, val2, val3) {
     if (getID(val1) == playerSymbol && 
     getID(val2) == playerSymbol && 
@@ -132,6 +165,31 @@ function verifyBoxPlay(val1, val2, val3) {
 }
 
 function selectPlay() {
+    if (!choice) {
+        verifyBoxSelf(1, 2, 3)
+    }
+    if (!choice) {
+        verifyBoxSelf(4, 5, 6)
+    }
+    if (!choice) {
+        verifyBoxSelf(7, 8, 9)
+    }
+    if (!choice) {
+        verifyBoxSelf(1, 4, 7)
+    }
+    if (!choice) {
+        verifyBoxSelf(2, 5, 8)
+    }
+    if (!choice) {
+        verifyBoxSelf(3, 6, 9)
+    }
+    if (!choice) {
+        verifyBoxSelf(1, 5, 9)
+    }
+    if (!choice) {
+        verifyBoxSelf(3, 5, 7)
+    }
+
     if (!choice) {
         verifyBoxPlay(1, 2, 3)
     }

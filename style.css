@@ -179,14 +179,13 @@ button:hover {
 
 .snake-image {
     position: absolute;
-    width: 180px;
+    width: 200px;
     display: none;
     animation: fadeIn .5s;
-    bottom: 120px;
 }
 
 .snake-on , .snake-off {
-    width: 180px;
+    width: 200px;
     position: absolute;
 }
 
