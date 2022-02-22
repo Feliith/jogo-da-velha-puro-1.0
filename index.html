@@ -9,8 +9,15 @@
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
 </head>
 <body>
-    <div class="select-box">
+    <div class="quant-players">
         <h1>Jogo da Velha</h1>
+        <div class="quant-players-select">
+            <button class="quant-player-btn one" onclick="onePlayer()">Um Jogador</button>
+            <button class="quant-player-btn two" onclick="twoPlayer()">Dois Jogadores</button>
+        </div>
+    </div>
+
+    <div class="select-box hide">
         <h2>Selecione um símbolo:</h2>
         <div class="players-btns">
             <button class="players-btn" onclick="xButton()">X</button>

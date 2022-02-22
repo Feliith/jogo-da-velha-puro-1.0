@@ -1,11 +1,15 @@
 
+let playerTwo = false
+
 let playerSymbol = ''
 let botSymbol = ''
-let playSymbol = ''
+let playSymbol = 'X'
 
 let choice = false
 let botPlay = false
 let winner = false
+
+const quantPlayerArea = document.querySelector('.quant-players')
 
 const snakeBot = document.querySelector('.snake-image')
 const snakeOn = document.querySelector('.snake-on')
@@ -21,6 +25,18 @@ const Boxes = document.querySelectorAll('.boxes')
 const winnerBox = document.querySelector('.winner-box')
 const winnerText = document.querySelector('.winner-text')
 const winnerTextSpan  = document.querySelector('.winner-text > span')
+
+
+onePlayer = () => {
+    quantPlayerArea.classList.add('hide')
+    selectBox.classList.remove('hide')
+}
+
+twoPlayer = () => {
+    quantPlayerArea.classList.add('hide')
+    playerTwo = true
+    playArea.classList.remove('hide')
+}
 
 const xButton = () => {
     playerSymbol = 'X'
@@ -48,21 +64,44 @@ function shiftTurn() {
     snakeOn.classList.toggle('on')
 }
 
+function shiftSymbol() {
+    if (playSymbol == 'X') {
+        playSymbol = 'O'
+    } else {
+        playSymbol = 'X'
+    }
+}
+
 const boxClicked = (box) => {
-    box.innerText = playerSymbol
-    box.style.pointerEvents = 'none'
-    shiftTurn()
-    playArea.style.pointerEvents = 'none'
+    if (playerTwo == false) {
+        box.innerText = playerSymbol
+        box.style.pointerEvents = 'none'
+        shiftTurn()
+        playArea.style.pointerEvents = 'none'
 
-    playSymbol = playerSymbol
-    box.setAttribute('id', playSymbol)
+        playSymbol = playerSymbol
+        box.setAttribute('id', playSymbol)
 
-    selectWinner()
-    if (!winner) {
-        setTimeout(() => {
-            selectPlay()
-            Bot()
-        }, 1200)
+        selectWinner()
+        if (!winner) {
+            setTimeout(() => {
+                selectPlay()
+                Bot()
+            }, 1200)
+        }
+    } else {
+        box.innerText = playSymbol
+        box.style.pointerEvents  = 'none'
+        box.setAttribute('id', playSymbol)
+
+        selectWinner()
+        playArea.style.pointerEvents = 'none'
+        if (!winner) {
+            playArea.style.pointerEvents = 'auto'
+        }
+
+        shiftTurn()
+        shiftSymbol()
     }
 }
 

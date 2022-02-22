@@ -34,12 +34,13 @@ body {
 
 
 
-.select-box, .play-area, .winner-box {
+.select-box, .play-area, .winner-box, .quant-players {
     position: absolute;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    text-align: center;
     width: 350px;
     height: 400px;
     border: 8px solid var(--standard-color);
@@ -77,6 +78,20 @@ button {
 button:hover {
     border: 5px solid var(--contrast-color);
 }
+
+
+
+.quant-player-btn {
+    width: 80%;
+    font-size: 24px;
+    font-weight: 400;
+}
+
+.quant-player-btn.one {
+    margin-top: 50px;
+}
+
+
 
 .play-area {
     height: 500px;
